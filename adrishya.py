@@ -140,8 +140,8 @@ async def link_extractor(url,session:ClientSession):
             if externals == "Y" or externals == "y":
                 if limk not in target_js and limk.endswith(".js"):
                     target_js.append(limk)
-                    print(colors.OKBLUE+colors.BOLD+"[+] JS file: "+limk+colors.ENDC)
-                    ginti.append("[+] JS file: "+limk)
+                    print(colors.OKBLUE+colors.BOLD+"[+] JS-file: "+limk+colors.ENDC)
+                    ginti.append("[+] JS-file: "+limk)
                 elif limk not in target_js and limk not in target_form and limk not in target_links:
                     target_js.append(limk)
                     print(colors.OKGREEN+colors.BOLD+"[+] Link: "+limk+colors.ENDC)
@@ -151,8 +151,8 @@ async def link_extractor(url,session:ClientSession):
             elif externals == "N" or externals == "n":
                 if target in limk and limk not in target_js and limk.endswith(".js"):
                     target_js.append(limk)
-                    print(colors.OKBLUE+colors.BOLD+"[+] JS file: "+limk+colors.ENDC)
-                    ginti.append("[+] JS file: "+limk)
+                    print(colors.OKBLUE+colors.BOLD+"[+] JS-file: "+limk+colors.ENDC)
+                    ginti.append("[+] JS-file: "+limk)
                 elif target in limk and limk not in target_js and limk not in target_form and limk not in target_links:
                     target_js.append(limk)
                     print(colors.OKGREEN+colors.BOLD+"[+] Link: "+limk+colors.ENDC)
