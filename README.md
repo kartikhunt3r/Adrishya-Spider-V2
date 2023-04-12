@@ -40,9 +40,9 @@ this version is with some minor changes, the main change is on output files. V2 
 
 
 ```bash
-git clone https://github.com/kartikhunt3r/Adrishya-Spider.git
+git clone https://github.com/kartikhunt3r/Adrishya-Spider-V2.git
 
-cd Adrishya-Spider
+cd Adrishya-Spider-V2
 
 chmod +x *
 
