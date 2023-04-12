@@ -65,7 +65,7 @@ invalid=True
 
 while invalid:
     # externals=input(colors.WARNING+colors.BOLD+"Do you Want to include External third Party Links?[Y/N]: ")
-    externals = "Y"
+    externals = "N"
     if externals == "Y" or externals == "y" or externals == "N" or externals == "n":
         invalid=False
     else:
