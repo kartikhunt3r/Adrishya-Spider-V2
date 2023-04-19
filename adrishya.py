@@ -117,14 +117,12 @@ async def link_extractor(url,session:ClientSession):
             if externals=="y" or externals=="Y":
 
                 if link not in target_links:
-                    print(colors.OKGREEN+colors.BOLD+"[+] Link: "+link+colors.ENDC)
                     target_links.append(link)
                     ginti.append("[+] Link: "+link)
             
             elif externals=="n" or externals=="N":
 
                 if target in link and link not in target_links:
-                    print(colors.OKGREEN+colors.BOLD+"[+] Link: "+link+colors.ENDC)
                     target_links.append(link)
                     ginti.append("[+] Link: "+link)
 
@@ -140,22 +138,18 @@ async def link_extractor(url,session:ClientSession):
             if externals == "Y" or externals == "y":
                 if limk not in target_js and limk.endswith(".js"):
                     target_js.append(limk)
-                    print(colors.OKBLUE+colors.BOLD+"[+] JS-file: "+limk+colors.ENDC)
                     ginti.append("[+] JS-file: "+limk)
                 elif limk not in target_js and limk not in target_form and limk not in target_links:
                     target_js.append(limk)
-                    print(colors.OKGREEN+colors.BOLD+"[+] Link: "+limk+colors.ENDC)
                     ginti.append("[+] Link: "+limk)
 
 
             elif externals == "N" or externals == "n":
                 if target in limk and limk not in target_js and limk.endswith(".js"):
                     target_js.append(limk)
-                    print(colors.OKBLUE+colors.BOLD+"[+] JS-file: "+limk+colors.ENDC)
                     ginti.append("[+] JS-file: "+limk)
                 elif target in limk and limk not in target_js and limk not in target_form and limk not in target_links:
                     target_js.append(limk)
-                    print(colors.OKGREEN+colors.BOLD+"[+] Link: "+limk+colors.ENDC)
                     ginti.append("[+] Link: "+limk)
                     
         for limk in form_links:
@@ -168,13 +162,11 @@ async def link_extractor(url,session:ClientSession):
             if externals == "Y" or externals == "y":
                 if limk not in target_form:
                     target_form.append(limk)
-                    print(colors.HEADER+colors.BOLD+"[+] Form: "+limk+colors.ENDC)
                     ginti.append("[+] Form: "+limk)
             
             elif externals == "N" or externals == "n":
                 if target in limk and limk not in target_form:
                     target_form.append(limk)
-                    print(colors.HEADER+colors.BOLD+"[+] Form: "+limk+colors.ENDC)
                     ginti.append("[+] Form: "+limk)
                     
         for limk in xml_links:
@@ -184,13 +176,11 @@ async def link_extractor(url,session:ClientSession):
             if externals == "Y" or externals == "y":
                 if limk not in target_form:
                     target_form.append(limk)
-                    print(colors.WARNING+colors.BOLD+"[+] Sitemap-Results: "+limk+colors.ENDC)
                     ginti.append("[+] Sitemap-Results: "+limk)
             
             elif externals == "N" or externals == "n":
                 if target in limk and limk not in target_form:
                     target_form.append(limk)
-                    print(colors.WARNING+colors.BOLD+"[+] Sitemap-Results: "+limk+colors.ENDC)
                     ginti.append("[+] Sitemap-Results: "+limk)
         
         
@@ -202,13 +192,11 @@ async def link_extractor(url,session:ClientSession):
             if externals == "Y" or externals == "y":
                 if limk not in target_robo:
                     target_robo.append(limk)
-                    print(colors.OKCYAN+colors.BOLD+"[+] ROBOTS.TXT-Results: "+limk+colors.ENDC)
                     ginti.append("[+] ROBOTS.TXT-Results: "+limk)
             
             elif externals == "N" or externals == "n":
                 if target in limk and limk not in target_robo:
                     target_robo.append(limk)
-                    print(colors.OKCYAN+colors.BOLD+"[+] ROBOTS.TXT-Results: "+limk+colors.ENDC)
                     ginti.append("[+] ROBOTS.TXT-Results: "+limk)
 
 
@@ -237,7 +225,6 @@ while True:
     try:
         asyncio.run(crawl(temp_links))
         if len(temp_links)<=0:
-            print(colors.HEADER+colors.BOLD+"Finding Wayback Results ...")
             with open(y+'/results.txt', 'a') as the_file:
                 for link in ginti:
                     url = link.split(" ")[2]
@@ -246,8 +233,6 @@ while True:
                     url = 'http://web.archive.org/cdx/search/cdx?url=*.'+target+'/*&output=txt&fl=original&collapse=urlkey'
                     r = requests.get(url)
                     results = r.text
-                    print(colors.OKBLUE+colors.BOLD+"------------- [+] Way Back Result ------------")
-                    print (results)
                     with open(y+'/wayback.txt', 'a') as the_file:
                         the_file.write(results)
                         the_file.close()
@@ -255,7 +240,6 @@ while True:
             print(colors.OKCYAN+colors.BOLD+"[+] Total Discoveries: "+(str(len(ginti))))
             sys.exit()
     except KeyboardInterrupt:
-        print(colors.HEADER+colors.BOLD+"Finding Wayback Results ...")
         with open(y+'/results.txt', 'a') as the_file:
                 for link in ginti:
                     url = link.split(" ")[2]
@@ -264,8 +248,6 @@ while True:
             url = 'http://web.archive.org/cdx/search/cdx?url=*.'+target+'/*&output=txt&fl=original&collapse=urlkey'
             r = requests.get(url)
             results = r.text
-            print(colors.OKBLUE+colors.BOLD+"------------- [+] Way Back Result ------------")
-            print (results)
             with open(y+'/wayback.txt', 'a') as the_file:
                 the_file.write(results)
                 the_file.close()
