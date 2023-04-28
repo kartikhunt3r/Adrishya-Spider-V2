@@ -28,12 +28,12 @@ if not target.startswith("http://") and not target.startswith("https://"):
 
 if target.endswith("/"):
     target=target[:-1]
-print(colors.OKCYAN+colors.BOLD+"[+] Target: "+target+colors.ENDC)
+#print(colors.OKCYAN+colors.BOLD+"[+] Target: "+target+colors.ENDC)
 
 try:
     requests.get(target)
 except Exception as e:
-    print(colors.FAIL+colors.BOLD+"Please Enter A Valid URL ex:https://example.com")
+   # print(colors.FAIL+colors.BOLD+"Please Enter A Valid URL ex:https://example.com")
     sys.exit()
 
 x = target.split("/")
@@ -48,7 +48,7 @@ while invalid:
     if externals == "Y" or externals == "y" or externals == "N" or externals == "n":
         invalid=False
     else:
-        print(colors.FAIL+colors.BOLD+"Please Answer In Y/N")
+       # print(colors.FAIL+colors.BOLD+"Please Answer In Y/N")
 
 wayinvalid=True
 
@@ -58,7 +58,7 @@ while wayinvalid:
     if waybacks == "Y" or waybacks == "y" or waybacks == "N" or waybacks == "n":
         wayinvalid=False
     else:
-        print(colors.FAIL+colors.BOLD+"Please Answer In Y/N")
+        #print(colors.FAIL+colors.BOLD+"Please Answer In Y/N")
 
 target_url=[]
 target_links = []
@@ -215,8 +215,8 @@ while True:
                     with open(y+'/wayback.txt', 'a') as the_file:
                         the_file.write(results)
                         the_file.close()
-            print(colors.HEADER+colors.BOLD+"[+] Done")
-            print(colors.OKCYAN+colors.BOLD+"[+] Total Discoveries: "+(str(len(ginti))))
+           # print(colors.HEADER+colors.BOLD+"[+] Done")
+            #print(colors.OKCYAN+colors.BOLD+"[+] Total Discoveries: "+(str(len(ginti))))
             sys.exit()
     except KeyboardInterrupt:
         with open(y+'/results.txt', 'a') as the_file:
@@ -230,6 +230,6 @@ while True:
             with open(y+'/wayback.txt', 'a') as the_file:
                 the_file.write(results)
                 the_file.close()
-        print(colors.FAIL+colors.BOLD+"[!] Scan Aborted By User.")
-        print(colors.OKCYAN+colors.BOLD+"[+] Total Discoveries: "+str(len(ginti)))
+      #  print(colors.FAIL+colors.BOLD+"[!] Scan Aborted By User.")
+       # print(colors.OKCYAN+colors.BOLD+"[+] Total Discoveries: "+str(len(ginti)))
         sys.exit()
